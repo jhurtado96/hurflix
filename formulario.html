@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
@@ -12,7 +12,7 @@
 <body>
     <header>
 		<nav>
-		<div class="logo"><a href="/"><img src="" alt="">HURTFLIX</a></div>
+		<div class="logo"><a href="index.html"><img src="" alt="">HURTFLIX</a></div>
 			<ul>
 				<li><a href="formulario.html"><i class="fa fa-home" aria-hidden="true"></i> Añadir pelicula</a></li>
 				<li><a href="#">Categorias</a>
@@ -70,24 +70,15 @@
 			
 		</nav>
 	</header>
-
-	<section> 
-	<h2>Nuevos Estrenos</h2>
-	<div class="section">
-		<div class="recents-movies">
-			<div  id="cartasPeliculas" class="recents-movie-container">
-			
-
-
-                
-			</div>
-			
-		</div>
-	</div>
-	
-	
-	
-	
-	
+    <section id="ocultar">
+		<form style="display: inline-block;">
+		<input id="tit" type="text" placeholder="Titulo">
+		<input id="ano" type="text" placeholder="Anyo Lanzamiento">
+		<input id="pais" type="text" placeholder="Pais">
+		<input id="gen" type="text" placeholder="Genero">
+		<input id="imagencita" type="text" placeholder="Foto">
+		<a class="myButton" type="button" onclick="mostrarLanuevaPelicula()" id="meterPeli">Introducir Pelicula!</a>
+		</form>
+    </section>    
 </body>
 </html>

@@ -9,10 +9,7 @@ var Imdb = /** @class */ (function () {
             this.peliculas[i].mostrarDatosPeliculas();
         }
     };
-    // public escribirEnFicheroJSON(nombreFichero: string) {
-    //     let imbd2 = JSON.stringify(this)
-    //     fs.writeFileSync(nombreFichero, imbd2)
-    // }
+    
     Imdb.prototype.obtenerInstanciaIMDB = function (nombreFichero) {
         var fs = require('fs');
         var imdb = new Imdb([]);
@@ -327,6 +324,19 @@ var arrPelis = [movie1, movie2,movie3,movie4,movie5,movie6];
 
 let str = ""
 $(document).ready(function () {
+
+//Le hago parse y lo guardo en una variable JSON para acceder a él.
+
+let json = JSON.parse(localStorage.getItem("peliculaGuardar"))
+
+//Creo un nuevo objeto de la clase película
+
+let peliculaGuardar = new Movie(json.title,json.releaseYear,json.nationality,json.genre,json.foto)
+
+//Ahora que ya es un objeto pelicula hago push al array de estas.
+
+arrPelis.push(peliculaGuardar)
+   
     
     for(let i = 0;i<arrPelis.length;i++){
         str = '<div class="image-poster">'+
@@ -343,7 +353,7 @@ $(document).ready(function () {
 
 });
 
-
+//Metodo que muestra la nueva pelicula
 
 function mostrarLanuevaPelicula(){
     let titulito= $("#tit").val()     
@@ -351,11 +361,20 @@ function mostrarLanuevaPelicula(){
         let genero=$("#gen").val()
         let pais=$("#pais").val()
         let foto=$("#imagencita").val()
-    let peliculaNueva = new Movie(titulito,anyito,genero,pais,foto)
+    let peliculaNueva= new Movie(titulito,anyito,genero,pais,foto)
         arrPelis.push(peliculaNueva)
+
+ // Convierto a JSON la película nueva y la guardo en el local storage
+
+        localStorage.setItem("peliculaGuardar",JSON.stringify(peliculaNueva))
+//Muestro el array a modo de comprobacion
+
         console.log(arrPelis)
-    let str2 =""
-    $(document).ready(function () {
+// Creo un string donde almacenar la nueva pelicula
+        let str2 =""
+
+
+        $(document).ready(function () {
     
         
             str2 = '<div class="image-poster">'+
@@ -366,11 +385,17 @@ function mostrarLanuevaPelicula(){
                     '<a class="down" href="down" >Descargar</a>'+
                 '</div></div></div></div>'
     
+//Le hago append a cartasPeliculas
     
         $("#cartasPeliculas").append(str2)
         }
-    
+
+        
+        
     );
+    
+    
+    
 }
 
 
